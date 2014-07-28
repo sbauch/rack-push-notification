@@ -38,6 +38,8 @@ module Rack
       params.delete(:tags)
       params.delete(:languages)
 
+      raise params.inspect
+
       record.set(params)
       
       record.values[:ip_address] = @request.ip
