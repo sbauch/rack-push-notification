@@ -35,8 +35,10 @@ module Rack
 
       record = Device.find(token: params[:token]) || Device.new
       
-      params.delete(:tags)
-      params.delete(:languages)
+      params.delete("tags")
+      params.delete("languages")
+      params.delete("splat")
+      params.delete("captures")
 
       raise params.inspect
 
