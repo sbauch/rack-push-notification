@@ -30,13 +30,14 @@ module Rack
     end
 
     put '/devices/:token/?' do
-      param :languages, Array
-      param :tags, Array
+      # param :languages, Array
+      # param :tags, Array
 
       record = Device.find(token: params[:token]) || Device.new
       
       params.delete(:tags)
-        
+      params.delete(:languages)
+
       record.set(params)
       
       record.values[:ip_address] = @request.ip
