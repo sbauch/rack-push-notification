@@ -34,9 +34,9 @@ module Rack
       param :tags, Array
 
       record = Device.find(token: params[:token]) || Device.new
+      params[:tags].delete
       record.set(params)
       
-      record.values[:tags]= Sequel.pg_array(params[:tags])
       record.values[:ip_address] = @request.ip
 
       code = record.new? ? 201 : 200
