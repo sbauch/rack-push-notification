@@ -40,8 +40,6 @@ module Rack
       params.delete("splat")
       params.delete("captures")
 
-      raise params.inspect
-
       record.set(params)
       
       record.values[:ip_address] = @request.ip
